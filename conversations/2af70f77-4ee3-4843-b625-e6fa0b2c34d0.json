@@ -1,0 +1,28 @@
+{
+  "session_id": "2af70f77-4ee3-4843-b625-e6fa0b2c34d0",
+  "domain": "html_css_js",
+  "messages": [
+    {
+      "role": "user",
+      "content": "سلام",
+      "timestamp": "2025-09-16T06:19:04.017621"
+    },
+    {
+      "role": "assistant",
+      "content": "أهلاً بك! كيف يمكنني مساعدتك في برمجة Python اليوم؟\n",
+      "timestamp": "2025-09-16T06:19:04.757976"
+    },
+    {
+      "role": "user",
+      "content": "تحدث عن flutter",
+      "timestamp": "2025-09-16T06:19:26.750604"
+    },
+    {
+      "role": "assistant",
+      "content": "أنا آسف، لكن أنا متخصص فقط في برمجة Python. Flutter هي إطار عمل لتطوير واجهات المستخدم من Google. إذا كان لديك أي أسئلة حول Python، فسأكون سعيدًا بالإجابة عليها!\n",
+      "timestamp": "2025-09-16T06:19:27.505784"
+    }
+  ],
+  "created_at": "2025-09-16T06:18:49.868443",
+  "updated_at": "2025-09-16T06:19:27.505784"
+}

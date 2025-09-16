@@ -1,0 +1,18 @@
+{
+  "session_id": "be7153cd-e5fe-43cd-be1b-2ea09574d47c",
+  "domain": "html_css_js",
+  "messages": [
+    {
+      "role": "user",
+      "content": "مرحا",
+      "timestamp": "2025-09-16T04:01:41.237912"
+    },
+    {
+      "role": "assistant",
+      "content": "عذراً، حدث خطأ في معالجة طلبك. الرجاء المحاولة مرة أخرى.",
+      "timestamp": "2025-09-16T04:01:41.407760"
+    }
+  ],
+  "created_at": "2025-09-16T04:01:35.425443",
+  "updated_at": "2025-09-16T04:01:41.407760"
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشات بوت التعليمي المتخصص</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-robot"></i>
+                    الشات بوت التعليمي المتخصص
+                </h1>
+                <p class="header-subtitle">مساعدك الذكي للتعلم في التخصصات المختلفة</p>
+            </div>
+        </header>
+
+        <!-- Domain Selection -->
+        <div class="domain-selection" id="domainSelection">
+            <div class="domain-card">
+                <h2>
+                    <i class="fas fa-graduation-cap"></i>
+                    اختر تخصصك
+                </h2>
+                <p>حدد المجال الذي تريد التعلم فيه لبدء محادثة متخصصة</p>
+
+                <div class="domains-grid" id="domainsGrid">
+                    <!-- سيتم تحميل التخصصات هنا ديناميكياً -->
+                </div>
+
+                <button class="start-chat-btn" id="startChatBtn" disabled>
+                    <i class="fas fa-comments"></i>
+                    بدء المحادثة
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div class="chat-interface" id="chatInterface" style="display: none;">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h3 id="currentDomain">
+                        <i class="fas fa-circle-dot"></i>
+                        <span id="domainName"></span>
+                    </h3>
+                    <p id="domainDescription"></p>
+                </div>
+                <div class="chat-actions">
+                    <button class="action-btn" id="newChatBtn" title="محادثة جديدة">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="action-btn" id="historyBtn" title="تاريخ المحادثة">
+                        <i class="fas fa-history"></i>
+                    </button>
+                    <button class="action-btn" id="settingsBtn" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p id="welcomeText">مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <div class="bot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="typing-text">المساعد يكتب...</span>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <form class="message-form" id="messageForm">
+                    <div class="input-container">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="اكتب رسالتك هنا..." 
+                            rows="1"
+                            maxlength="1000"></textarea>
+                        <button type="submit" class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-counter">
+                        <span id="charCounter">0</span> / 1000 حرف
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+            <div class="connection-status" id="connectionStatus">
+                <i class="fas fa-circle"></i>
+                <span>جاري الاتصال...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal للتاريخ -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-history"></i>
+                    تاريخ المحادثة
+                </h3>
+                <button class="close-modal" id="closeHistoryModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="historyContent">
+                <!-- سيتم تحميل التاريخ هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal للإعدادات -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-cog"></i>
+                    الإعدادات
+                </h3>
+                <button class="close-modal" id="closeSettingsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="fontSize">حجم الخط:</label>
+                    <select id="fontSize">
+                        <option value="14">صغير</option>
+                        <option value="16" selected>متوسط</option>
+                        <option value="18">كبير</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="theme">السمة:</label>
+                    <select id="theme">
+                        <option value="light" selected>فاتح</option>
+                        <option value="dark">داكن</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="autoScroll">التمرير التلقائي:</label>
+                    <input type="checkbox" id="autoScroll" checked>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
